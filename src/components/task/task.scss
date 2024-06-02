@@ -1,0 +1,44 @@
+.task{
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    .card{
+        margin: 10px 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #f4f4f4;
+       
+        .info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .title{
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+            .description{
+                font-size: 1rem;
+                color: #333;
+            }
+        }
+        .actions{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .edit{
+                background: #333;
+                color: #fff;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+            .delete{
+                background: #333;
+                color: #fff;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

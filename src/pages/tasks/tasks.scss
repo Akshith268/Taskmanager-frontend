@@ -1,0 +1,211 @@
+.tasks {
+    overflow: hidden;
+    width: 100%;
+
+ 
+
+// Define styles for buttons
+.editbutton,
+.deletebutton,
+.savebutton,
+.cancelbutton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+// Styles for edit button
+.editbutton {
+  background-color:white; // Blue
+  color: black ; // White
+
+  &:hover {
+    background-color: black; // Darker blue
+    color: white;
+  }
+}
+
+// Styles for delete button
+.deletebutton {
+  background-color: black; // Red
+  color: #fff; // White
+
+  &:hover {
+    background-color: white; // Darker red
+    color: black;
+  }
+}
+
+// Styles for save button
+.savebutton {
+  background-color: #28a745; // Green
+  color: #fff; // White
+
+  &:hover {
+    background-color: #218838; // Darker green
+  }
+}
+
+// Styles for cancel button
+.cancelbutton {
+  background-color: #6c757d; // Gray
+  color: #fff; // White
+
+  &:hover {
+    background-color: #5a6268; // Darker gray
+  }
+}
+
+
+    .bodies {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+        
+        .side {
+            width: 20%;
+            height: 100%;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+                padding: 10px 20px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    padding: 10px 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #333;
+                    }
+                }
+            }
+        }
+
+        .task {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-left: 5%;
+            // cursor: pointer;
+            background: white;
+
+            .starting {
+                
+                    margin-top: 20px;
+                    // margin-left: 200px;
+                    // margin-right: 200px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 20px;
+
+                    button{
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+                        background-color: black;
+                        color: #fff;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.263);
+                        }
+                    }
+                
+                    input {
+                      width: 100%;
+                      padding: 10px;
+                      border: 1px solid #ccc;
+                      border-radius: 5px;
+                      font-size: 1rem;
+                
+                      &:focus {
+                        outline: none;
+                        border-color: #007bff;
+                        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+                      }
+                    }
+                  
+            }
+
+            .tasking {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 10px 20px;
+              
+                .row {
+                  flex-basis: calc(33.33% - 20px); /* Each task takes up to 33.33% width with margin */
+                  margin-bottom: 20px;
+                  transition: transform 0.3s, box-shadow 0.3s;
+                  border: 2px solid #f4f4f4;
+                  padding: 5px;
+              
+                  &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                    background: #f4f4f4;
+                  }
+                    .title {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                    }
+
+                    .description {
+                        font-size: 1rem;
+                        color: #333;
+                    }
+
+                    .buttons {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 20px;
+
+                        button {
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+
+                            &:first-child {
+                                background-color: #28a745; // Green
+                                color: #fff;
+
+                                &:hover {
+                                    background-color: #218838; // Darker green
+                                }
+                            }
+
+                            &:last-child {
+                                background-color: #dc3545; // Red
+                                color: #fff;
+
+                                &:hover {
+                                    background-color: #c82333; // Darker red
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
