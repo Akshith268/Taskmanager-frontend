@@ -40,6 +40,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000/api/"
+  "proxy": "https://taskmanager-backend-two.vercel.app/api/"
 
 }
