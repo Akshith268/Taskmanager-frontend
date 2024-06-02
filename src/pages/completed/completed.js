@@ -15,7 +15,7 @@ export default function Completed() {
           throw new Error("Access token is missing.");
         }
 
-        const response = await axios.get(`user/completedtasks`, {
+        const response = await axios.get(`https://taskmanager-backend-1-on7y.onrender.com/api/user/completedtasks`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -38,7 +38,7 @@ export default function Completed() {
 
   const markTaskAsIncomplete = async (taskId) => {
     try {
-      await axios.put(`user/taskscomplete`, {
+      await axios.put(`https://taskmanager-backend-1-on7y.onrender.com/api/user/taskscomplete`, {
         taskId: taskId,
         completed: false // Mark the task as incomplete
       }, {

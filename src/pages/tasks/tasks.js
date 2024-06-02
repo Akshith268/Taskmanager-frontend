@@ -20,7 +20,7 @@ export default function Tasks() {
           throw new Error("Access token is missing.");
         }
 
-        const response = await axios.get(`user/usertasks`, {
+        const response = await axios.get(`https://taskmanager-backend-1-on7y.onrender.com/api/user/usertasks`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -60,7 +60,7 @@ export default function Tasks() {
   const saveEditedTask = async (editedTaskData) => {
     try {
       // Send a PUT request to update the task data
-      await axios.put(`user/tasksupdate`, {
+      await axios.put(`https://taskmanager-backend-1-on7y.onrender.com/api/user/tasksupdate`, {
         taskId: editedTaskData._id,
         name: editedTaskData.name,
         description: editedTaskData.description,
@@ -87,7 +87,7 @@ export default function Tasks() {
   const deleteTask = async (taskId) => {
     try {
       // Send a DELETE request to delete the task
-      await axios.delete(`user/tasksdelete`, {
+      await axios.delete(`https://taskmanager-backend-1-on7y.onrender.com/api/user/tasksdelete`, {
         data: {
           taskId: taskId
         },
@@ -106,7 +106,7 @@ export default function Tasks() {
 
   const toggleTaskCompletion = async (taskId, completed) => {
     try {
-      await axios.put(`user/taskscomplete`, {
+      await axios.put(`https://taskmanager-backend-1-on7y.onrender.com/api/user/taskscomplete`, {
         taskId: taskId,
         completed: !completed // Toggle the completion status
       }, {

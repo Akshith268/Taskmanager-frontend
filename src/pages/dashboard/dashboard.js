@@ -76,7 +76,7 @@ export default function Dashboard() {
   // Function to handle search
   const handleSearch = async (searchTerm) => {
     try {
-      const response = await axios.get(`user/usertasks?search=${searchTerm}`, {
+      const response = await axios.get(`https://taskmanager-backend-1-on7y.onrender.com/api/user/usertasks?search=${searchTerm}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
