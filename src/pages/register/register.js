@@ -1,56 +1,97 @@
-import React from 'react'
-import { useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
- 
+import "./register.scss";
+
 export default function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmpassword, setConfirmPassword] = useState("");
+  const validateForm = () => {
+    if (!username || !email || !password || !confirmpassword) {
+      setError("All fields are required.");
+      return false;
+    }
+    if (password !== confirmpassword) {
+      setError("Passwords do not match.");
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Please enter a valid email.");
+      return false;
+    }
+    return true;
+  };
 
-    // const history = useHistory();
-    const navigate = useNavigate();
-
-    const registerfunc = async (e) => {
-        e.preventDefault();
-        console.log("Registering...");
+  const registerfunc = async (e) => {
+    e.preventDefault();
     
+    // Reset error before submission
+    setError("");
 
-    try{
-      const response= await axios.post("https://taskmanager-backend-1-on7y.onrender.com/api/auth/register",{
-        username:username,
+    // Validate form inputs
+    if (!validateForm()) return;
+
+    try {
+      const response = await axios.post("http://localhost:8000/api/auth/register", {
+        username: username,
         email: email,
         password: password,
-        confirmpassword: confirmpassword
+        confirmpassword: confirmpassword,
       });
-     console.log(response);
-      const res= await response.data;
-      if(res.status==="ok"){
+
+      const res = await response.data;
+      if (res.status === "ok") {
         navigate('/login');
+      } else {
+        setError(res.message || "Something went wrong, please try again.");
       }
-      else{
-        alert(res.message);
-      }
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
+      setError("Network error. Please try again later.");
     }
-    
-  }
+  };
+
   return (
-    <div>
-        <h1>Register</h1><br/><br/>
-
-        <form onSubmit={registerfunc}>
-            <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} placeholder="Username" /><br/><br/>
-            <input type="email"  value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" /><br/><br/>
-            <input type="password"  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" /><br/><br/>
-            <input type="password"  value={confirmpassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Password" /><br/><br/>
-            <button type='submit' onClick={registerfunc} >Register</button>
-        </form>
-
+    <div className="register-container">
+      <h1>Register</h1>
+      <form onSubmit={registerfunc}>
+        {error && <div className="error-message">{error}</div>}
+        
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+        
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        
+        <input
+          type="password"
+          value={confirmpassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm Password"
+        />
+        
+        <button type="submit">Register</button>
+      </form>
     </div>
-  )
+  );
 }

@@ -11,7 +11,7 @@ export default function Login() {
     const login = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://taskmanager-backend-1-on7y.onrender.com/api/auth/login", {
+            const response = await axios.post("http://localhost:8000/api/auth/login", {
                 email: email,
                 password: password
             });

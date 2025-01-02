@@ -38,7 +38,7 @@ export default function Completed() {
 
   const markTaskAsIncomplete = async (taskId) => {
     try {
-      await axios.put(`https://taskmanager-backend-1-on7y.onrender.com/api/user/taskscomplete`, {
+      await axios.put(`http://localhost:8000/api/user/taskscomplete`, {
         taskId: taskId,
         completed: false // Mark the task as incomplete
       }, {

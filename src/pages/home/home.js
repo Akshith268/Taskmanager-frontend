@@ -1,19 +1,21 @@
-import React from 'react'
-import './home.scss'
+import React from 'react';
+import './home.scss';
 import { Link } from 'react-router-dom';
-import Login from '../login/login';
+
 function Home() {
-
-
   return (
-    <div>
-        <h1>
-          Welcome to Task Manager<br/>
-          <button><Link to="/register">Register</Link></button><br/>
-          <button><Link to="/login">Login</Link></button><br/>
-        </h1>
+    <div className="home-container">
+      <h1>Welcome to Task Manager</h1>
+      <div className="button-container">
+        <Link to="/register">
+          <button className="home-button">Register</button>
+        </Link>
+        <Link to="/login">
+          <button className="home-button">Login</button>
+        </Link>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Home;
